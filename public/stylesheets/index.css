@@ -1,0 +1,23 @@
+.total-name {
+  color: red;
+  font-size: 20px;
+}
+
+.total-cost {
+  color: red;
+  font-size: 80px;
+}
+
+/* .btn-major {
+  background-color: #fd7e14;
+  color: #ffffff;
+}
+
+.btn-major:hover {
+  background-color: #bd3e00;
+  color: #ffffff;
+}
+
+.border-major {
+  border-color: #fd7e14 !important;
+} */

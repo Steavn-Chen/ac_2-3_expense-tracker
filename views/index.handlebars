@@ -1,1 +1,83 @@
-<h1>己進到網頁</h1>
+<div class="container mt-3">
+  {{!-- 類別 --}}
+  <div class="col-12 col-md-8 mx-auto">
+    {{!-- <div class="row justify-content-between mt-5"> --}}
+
+      {{!-- <div class="button-div2 mt-3 my-auto "> --}}
+        {{!-- <form action="" method="post">
+          <button type="submit" class="btn btn-dark">新增支出</button>
+        </form> --}}
+        {{!-- <a class="btn btn-dark" href="./new">新增支出</a> --}}
+        {{!-- </div> --}}
+
+      <div class="form" action="/" method="GET">
+        <div class="col-auto mt-5 my-auto">
+          <label class="mr-sm-2 sr-only" for="inlineFormCustomSelect">Preference</label>
+          <select class="custom-select mr-sm-2" id="inlineFormCustomSelect">
+            <option selected>類別</option>
+            <option value="1">家居物業</option>
+            <option value="2">交通出行</option>
+            <option value="3">休閒娛樂</option>
+            <option value="4">餐飲食品</option>
+            <option value="5">其他</option>
+          </select>
+        </div>
+      </div>
+
+      {{!--
+    </div> --}}
+    {{!-- 總支出金額 --}}
+    <div class="row col-12 mt-3 justify-content-center align-items-center">
+      <div class="total-name text-secondary mx-4">支出總金額 : </div>
+      <div class="total-cost text-warning">50000</div>
+    </div>
+    {{!-- 各項支出清單 --}}
+
+    <ul class="list-group list-striped">
+
+      <li class="list-group-item list-group-item-primary list-striped  border border-bottom-5 mt-1 ">
+        <div class="d-flex justify-content-between">
+          <div class="row">
+            <div class="icon my-auto mx-3">
+              <i class="fas  fa-home fa-4x "></i>
+            </div>
+            <span class="column ml-3 my-auto">
+              <div class="name mx-3">午餐</div>
+              <div class="date">2019/04/23</div>
+            </span>
+          </div>
+          <h3 class="amount my-auto mx-auto">
+            花費 : 20000
+          </h3>
+
+          <div class="button-div ml-3">
+            {{!-- <form action="" method="post">
+              <button type="submit" class="btn btn-success" style="display: inline;">修改</button>
+            </form> --}}
+            <a class="btn btn-success" href="./edit">修改</a>
+            <form action="" method="post">
+              <button type="submit" class="btn btn-danger">刪除</button>
+            </form>
+
+          </div>
+        </div>
+      </li>
+      {{!-- --}}
+
+      {{!-- --}}
+    </ul>
+    <div class="row justify-content-center mt-5 ">
+      <div class="col-md-6 col-sm-4">
+
+        {{!-- <div class="button-div2 mt-3 my-auto "> --}}
+          {{!-- <form action="" method="post">
+            <button type="submit" class="btn btn-dark">新增支出</button>
+          </form> --}}
+          <a class="btn btn-block btn-major" href="./new">新增支出</a>
+          {{!--
+        </div> --}}
+
+      </div>
+    </div>
+  </div>
+</div>
