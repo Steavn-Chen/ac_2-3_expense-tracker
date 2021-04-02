@@ -7,7 +7,21 @@
   color: red;
   font-size: 80px;
 }
-
+.fa-shuttle-van {
+  color: #5085ff;
+}
+.fa-utensils {
+  color: #dae47e;
+}
+.fa-grin-beam {
+  color: #ffbed5;
+}
+.fa-home {
+  color: #50f4ff;
+}
+.fa-pen {
+  color: #07342a;
+}
 /* .btn-major {
   background-color: #fd7e14;
   color: #ffffff;

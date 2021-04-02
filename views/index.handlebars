@@ -1,14 +1,14 @@
 <div class="container mt-3">
   {{!-- 類別 --}}
   <div class="col-12 col-md-8 mx-auto">
-    {{!-- <div class="row justify-content-between mt-5"> --}}
+    <div class="row justify-content-between mt-5">
 
-      {{!-- <div class="button-div2 mt-3 my-auto "> --}}
+      <div class="button-div2 mt-3 my-auto ">
         {{!-- <form action="" method="post">
           <button type="submit" class="btn btn-dark">新增支出</button>
         </form> --}}
-        {{!-- <a class="btn btn-dark" href="./new">新增支出</a> --}}
-        {{!-- </div> --}}
+        <a class="btn btn-warning" href="./new">新增支出</a>
+      </div>
 
       <div class="form" action="/" method="GET">
         <div class="col-auto mt-5 my-auto">
@@ -24,8 +24,7 @@
         </div>
       </div>
 
-      {{!--
-    </div> --}}
+    </div>
     {{!-- 總支出金額 --}}
     <div class="row col-12 mt-3 justify-content-center align-items-center">
       <div class="total-name text-secondary mx-4">支出總金額 : </div>
@@ -34,20 +33,21 @@
     {{!-- 各項支出清單 --}}
 
     <ul class="list-group list-striped">
-
+      {{#each records}}
       <li class="list-group-item list-group-item-primary list-striped  border border-bottom-5 mt-1 ">
         <div class="d-flex justify-content-between">
           <div class="row">
             <div class="icon my-auto mx-3">
-              <i class="fas  fa-home fa-4x "></i>
+              {{!-- <i class="fas  fa-home fa-4x "></i> --}}
+              <i class="{{ this.categoryIcon }} fa-4x "></i>
             </div>
             <span class="column ml-3 my-auto">
-              <div class="name mx-3">午餐</div>
-              <div class="date">2019/04/23</div>
+              <div class="name mx-3">{{ this.name }}</div>
+              <div class="date">{{ this.date}}</div>
             </span>
           </div>
           <h3 class="amount my-auto mx-auto">
-            花費 : 20000
+            花費 : {{ this.amount}} 元
           </h3>
 
           <div class="button-div ml-3">
@@ -58,26 +58,27 @@
             <form action="" method="post">
               <button type="submit" class="btn btn-danger">刪除</button>
             </form>
-
           </div>
         </div>
       </li>
-      {{!-- --}}
-
-      {{!-- --}}
+      {{/each }}
     </ul>
-    <div class="row justify-content-center mt-5 ">
-      <div class="col-md-6 col-sm-4">
+    {{!-- <div class="row justify-content-center mt-5 "> --}}
+      {{!-- <div class="col-md-6 col-sm-4"> --}}
 
         {{!-- <div class="button-div2 mt-3 my-auto "> --}}
           {{!-- <form action="" method="post">
             <button type="submit" class="btn btn-dark">新增支出</button>
           </form> --}}
-          <a class="btn btn-block btn-major" href="./new">新增支出</a>
+          {{!-- <a class="btn btn-block btn-major" href="./new">新增支出</a> --}}
           {{!--
         </div> --}}
 
-      </div>
-    </div>
+        {{!-- </div> --}}
+      {{!-- </div> --}}
   </div>
 </div>
+
+<script>
+
+</script>
