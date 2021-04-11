@@ -3,32 +3,49 @@
   <div class="col-12 col-md-8 mx-auto">
     <div class="row justify-content-between mt-5">
 
-      <div class="button-div2 mt-3 my-auto ">
+      <div class="button-div2 mt-3 my-auto ml-3">
         {{!-- <form action="" method="post">
           <button type="submit" class="btn btn-dark">新增支出</button>
         </form> --}}
         <a class="btn btn-warning" href="./new">新增支出</a>
       </div>
 
-      <div class="form" action="/" method="GET">
+      <form action="/filter" method="GET">
         <div class="col-auto mt-5 my-auto">
-          <label class="mr-sm-2 sr-only" for="inlineFormCustomSelect">Preference</label>
-          <select class="custom-select mr-sm-2" id="inlineFormCustomSelect">
-            <option selected>類別</option>
+          {{!-- <label class="mr-sm-2 sr-only" for="inlineFormCustomSelect">Preference</label> --}}
+          <select name="category" class="custom-select mr-sm-2" id="filter-category" onchange="submit()">
+            {{!-- <option value="類別" selected>所有類別</option> --}}
+            <option disabled selected>所有類別</a></option>
+            {{#each categoryBox}}
+            {{!-- <option value="{{ this.category}}" {{#ifeq this.category "1" }} selected {{/ifeq}} {{#ifnoteq
+              this.category }} " " {{/ifnoteq}}>{{ this.category }}
+            </option> --}}
+            <option value="{{ this.category}}" {{#ifEq this.category }} selected {{else}} {{/ifEq}}>{{
+              this.category }}
+            </option>
+            {{!-- <option value=" {{ this.category}}">{{ this.category }}</option> --}}
+            {{!-- <option value="1">家居物業</option> --}}
+            {{!-- <option value="2">交通出行</option> --}}
+            {{!-- <option value="3">休閒娛樂</option> --}}
+            {{!-- <option value="4">餐飲食品</option> --}}
+            {{!-- <option value="5">其他</option>
+
+            {{!-- <option selected>類別</option>
             <option value="1">家居物業</option>
             <option value="2">交通出行</option>
             <option value="3">休閒娛樂</option>
             <option value="4">餐飲食品</option>
-            <option value="5">其他</option>
+            <option value="5">其他</option> --}}
+            {{!-- {{/select}} --}}
+            {{/each}}
           </select>
         </div>
-      </div>
-
+      </form>
     </div>
     {{!-- 總支出金額 --}}
     <div class="row col-12 mt-3 justify-content-center align-items-center">
       <div class="total-name text-secondary mx-4">支出總金額 : </div>
-      <div class="total-cost text-warning">50000</div>
+      <div class="total-cost text-warning">{{ totalAmount }} 元</div>
     </div>
     {{!-- 各項支出清單 --}}
 

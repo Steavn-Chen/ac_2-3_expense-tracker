@@ -1,7 +1,7 @@
 const mongoose = require('mongoose')
 
 const Category = require('../category')
-const recordData = require('../../record.json')
+const CategoryData = require('../../category.json')
 
 mongoose.connect('mongodb://localhost/expense-tracker', {useNewUrlParser: true, useUnifiedTopology: true})
 
@@ -13,11 +13,7 @@ db.on('error', () => {
 
 db.once('open', () => {
   console.log('mongodb connected!')
-    const categorys = recordData.map(record => ({ 
-      category: record.category,
-      categoryIcon: record.categoryIcon
-    }))
-      Category.insertMany(categorys)
+      Category.insertMany(CategoryData)
         .then(() => {
           console.log('insert recordseeder done')
           return db.close()
@@ -25,6 +21,13 @@ db.once('open', () => {
         .then(() => {
           console.log('The database connection to the record seeder has been closed!')  
         })
+        // map返回新陣列
+   // const categorys = CategoryData.forEach(category)
+    //  const categorys = CategoryData.map(category => ({ 
+    //   category: category.category,
+    //   categoryIcon: category.categoryIcon
+    // }))
+
   // for (let i = 0 ; i < recordData.length; i++ ) {
   //   Category.create ({
   //     category: recordData[i].category,

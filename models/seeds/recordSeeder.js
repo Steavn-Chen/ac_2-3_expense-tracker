@@ -15,7 +15,7 @@ db.once('open', () => {
   console.log('mongodb connected!')
     const records = recordData.map(record => ({
       name : record.name, 
-      date: record.date, 
+      date: record.date,
       category: record.category, 
       amount: record.amount, 
       categoryIcon: record.categoryIcon

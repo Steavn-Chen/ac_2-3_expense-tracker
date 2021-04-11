@@ -10,6 +10,10 @@ const categorySchema = new Schema ({
   categoryIcon: {
     type: String,
     required: true
+  },
+  categoryName: {
+    type: String,
+    required: true
   }
 })
 

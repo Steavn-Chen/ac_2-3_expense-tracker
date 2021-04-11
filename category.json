@@ -1,38 +1,27 @@
- [
-  {
-  "name": "捷運",
-  "date": "2021-03-30",
+[
+   {
+  "categoryName": "transportation",  
   "category": "交通出行",
-  "amount": "100",
   "categoryIcon": "fas fa-shuttle-van"
   }, 
   {
-  "name": "租金",
-  "date": "2021/03/20",
+  "categoryName": "Accommodation",   
   "category": "家居物業",
-  "amount": "9000",
   "categoryIcon": "fas fa-home"
   }, 
   {
-  "name": "早餐",
-  "date": "2021/03/25",
+  "categoryName":"dining",   
   "category": "餐飲食品",
-  "amount": "180",
   "categoryIcon": "fas fa-utensils"
   }, 
   {
-  "name": "看電影",
-  "date": "2021/03/21",
+  "categoryName": "leisure",
   "category": "休閒娛樂",
-  "amount": "260",
   "categoryIcon": "fas fa-grin-beam"
   }, 
   {
-  "name": "牙科",
-  "date": "2021/03/05",
+  "categoryName": "other",  
   "category": "其他",
-  "amount": "150",
   "categoryIcon": "fas fa-pen"
   }
- ]
-
+]
