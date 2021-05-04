@@ -13,6 +13,7 @@ mongoose.connect('mongodb://localhost/expense-tracker', {useNewUrlParser: true, 
 const Record = require('./models/record')
 // const Category = require('./models/category')
 const CategoryData = require('./category.json')
+const Category = require('./models/category.js')
 
 
 const db = mongoose.connection
@@ -50,12 +51,12 @@ app.get('/', (req, res) => {
     // if(a) return
     // if (a == '所有類別') { return options.fn(this) }
     //   else return options.inverse(this);
-  });
+  })
 
   Record.find()
     .lean()
     .then(records => { records.forEach(record => {
-       record.date = moment(record.date).format('YYYY-MM-DD')
+      //  record.date = moment(record.date).format('YYYY-MM-DD')
        getFormatDate(record)
       //  totalAmount += Number(record.amount)
       //  record.categoryIcon = record({Category:categoryIcon})
@@ -68,7 +69,34 @@ app.get('/', (req, res) => {
 })
 
 app.get('/new', (req, res) => {
-   res.render('new')
+  const categoryBox = []
+    CategoryData.forEach(items => {
+    categoryBox.push(items)
+    }) 
+  res.render('new', { categoryBox: categoryBox })
+})
+
+app.post('/', (req, res) => {
+  const { name, date, category, amount} = req.body
+    Category.find()
+      .lean()
+      .then(categories => { 
+        const categoryIconItem = categories.find(item => {
+          return category === item.category
+        })
+        return categoryIconItem.categoryIcon
+      })
+      .then(categoryIcon => 
+        Record.create ({
+          name : name,
+          date : date,
+          category : category,
+          amount : amount,
+          categoryIcon : categoryIcon
+        })
+      )
+    .then(() => res.redirect('/'))
+    .catch(error => console.log(error))
 })
 
 app.get('/filter', (req, res) => {
@@ -100,7 +128,7 @@ app.get('/filter', (req, res) => {
       //  totalAmount += Number(record.amount)
     })
     const totalAmount = getTotalAmount(filterRecord)
-      res.render('index', {records: filterRecord,totalAmount:   totalAmount,categoryBox:categoryBox })
+      res.render('index', {records: filterRecord,totalAmount: totalAmount,categoryBox:categoryBox })
     })
   .catch(error => console.log(error))
 })

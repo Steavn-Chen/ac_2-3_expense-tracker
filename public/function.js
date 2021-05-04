@@ -1,4 +1,5 @@
 const moment = require('moment')
+const Category = require('../models/category')
 
 function getTotalAmount(records) {
   let totalAmount = 0
@@ -13,3 +14,4 @@ function getFormatDate(record) {
 }
 
 module.exports = { getTotalAmount, getFormatDate }
+
