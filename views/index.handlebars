@@ -3,7 +3,7 @@
   <div class="col-12 col-md-8 mx-auto">
     <div class="row col-12 justify-content-between mt-5">
       <div class=" my-auto ml-4 border border-1">
-        <a class="btn btn-warning" href="./new">新增支出</a>
+        <a class="btn btn-warning" href="/records/new">新增支出</a>
       </div>
       <form action="/filter" method="GET">
         <div class=" my-auto ">
@@ -40,7 +40,7 @@
           </h3>
           <div class="button-div ml-3">
             <a class="btn btn-success" href="/records/{{ this._id }}/edit">修改</a>
-            <form action="/records/{{ this._id }}?_method=DELETE/delete" method="POST">
+            <form action="/records/{{ this._id }}?_method=DELETE" method="POST">
               <button type="submit" class="btn btn-danger">刪除</button>
             </form>
           </div>
@@ -51,5 +51,6 @@
 </div>
 
 <script>
+
 
 </script>

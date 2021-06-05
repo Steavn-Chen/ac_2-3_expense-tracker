@@ -1,26 +1,19 @@
-const mongoose = require('mongoose')
-
 const Category = require('../category')
 const CategoryData = require('../../category.json')
+require('../../config/mongoose')
 
-mongoose.connect('mongodb://localhost/expense-tracker', {useNewUrlParser: true, useUnifiedTopology: true})
-
-const db = mongoose.connection
+const db = require('../../config/mongoose')
 
 db.on('error', () => {
   console.log('mongodb error!')
 })
 
 db.once('open', () => {
-  console.log('mongodb connected!')
-      Category.insertMany(CategoryData)
-        .then(() => {
-          console.log('insert categorySeeder done')
-          return db.close()
-        })
-        .then(() => {
-          console.log('The database connection to the record seeder has been closed!')  
-        })
+  Category.insertMany(CategoryData)
+  .then(() => {
+    return db.close()
+  })
+   console.log('insert categorySeeder done.')
 })
 
 
