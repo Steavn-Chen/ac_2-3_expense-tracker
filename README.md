@@ -2,8 +2,8 @@
 
 ### 這個專案目的是讓老爸在網頁上做一個簡單的記帳,主要功能可以新增、修改、刪除並結算每筆支出的總結.
 
-![rejected])(https://github.com/Steavn-Chen/ac_restaurant_list/blob/master/%E5%B7%B1%E5%AE%8C%E6%88%90.PNG)
-![rejected](https://github.com/Steavn-Chen/ac_restaurant_list/blob/master/%E8%A8%BB%E5%86%8A%E9%A0%81.PNG)
+![rejected](https://github.com/Steavn-Chen/ac_restaurant_list/blob/master/%E5%B7%B1%E5%AE%8C%E6%88%90.PNG)
+![rejected](https://github.com/Steavn-Chen/expense-tracker/blob/master/%E8%80%81%E7%88%B8%E7%9A%84%E7%A7%81%E6%88%BF%E9%8C%A2.PNG)
 ## 開發環境
 
 - Node.js -v10.15.0
