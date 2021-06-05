@@ -2,7 +2,7 @@
 
 ### 這個專案目的是讓老爸在網頁上做一個簡單的記帳,主要功能可以新增、修改、刪除並結算每筆支出的總結.
 
-![rejected])(https://github.com/Steavn-Chen/ac_restaurant_list/blob/master/README.md)
+![rejected])(https://github.com/Steavn-Chen/ac_restaurant_list/blob/master/%E5%B7%B1%E5%AE%8C%E6%88%90.PNG)
 
 ## 開發環境
 
