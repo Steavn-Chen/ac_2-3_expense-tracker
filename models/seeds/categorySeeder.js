@@ -15,27 +15,12 @@ db.once('open', () => {
   console.log('mongodb connected!')
       Category.insertMany(CategoryData)
         .then(() => {
-          console.log('insert recordseeder done')
+          console.log('insert categorySeeder done')
           return db.close()
         })
         .then(() => {
           console.log('The database connection to the record seeder has been closed!')  
         })
-        // map返回新陣列
-   // const categorys = CategoryData.forEach(category)
-    //  const categorys = CategoryData.map(category => ({ 
-    //   category: category.category,
-    //   categoryIcon: category.categoryIcon
-    // }))
-
-  // for (let i = 0 ; i < recordData.length; i++ ) {
-  //   Category.create ({
-  //     category: recordData[i].category,
-  //     categoryIcon: recordData[i].categoryIcon
-  //   })
-  // }
-    // })
-  // console.log('done')
 })
 
 

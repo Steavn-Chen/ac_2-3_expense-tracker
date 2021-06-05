@@ -22,23 +22,10 @@ db.once('open', () => {
     }))
       Record.insertMany(records)
         .then(() => {
-          console.log('insert categoryseeder done')
+          console.log('insert recordSeeder done')
           return db.close()
         })
         .then(() => {
-          console.log('The database connection to the gategory seeder has been closed!')  
+          console.log('The database connection to the category seeder has been closed!')  
         })
-    // for (let i = 0; i < recordData.length ; i++) {
-      //   Record.create({ 
-        //     name : recordData[i].name, 
-        //     date: recordData[i].date , 
-  //     category: recordData[i].category, 
-  //     amount: recordData[i].amount , 
-  //     // categoryIcon: RecordData[i].categoryIcon
-  //     categoryIcon: " "
-  //   }) 
-  // }
-  // RecordData.forEach(record => {
-    // Record.create(record)
-    //  console.log('done')  
 })

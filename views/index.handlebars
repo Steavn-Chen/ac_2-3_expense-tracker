@@ -3,35 +3,16 @@
   <div class="col-12 col-md-8 mx-auto">
     <div class="row col-12 justify-content-between mt-5">
       <div class=" my-auto ml-4 border border-1">
-        {{!-- <form action="" method="post">
-          <button type="submit" class="btn btn-dark">新增支出</button>
-        </form> --}}
         <a class="btn btn-warning" href="./new">新增支出</a>
       </div>
-      {{!-- <div class="col-12 mt-5 my-auto border border-1" id="form-options"></div> --}}
       <form action="/filter" method="GET">
         <div class=" my-auto ">
-          {{!-- <label class="mr-sm-2 sr-only" for="inlineFormCustomSelect">Preference</label> --}}
-          <select name="category" class="form-select" onchange="submit()">
-            {{!-- <option value="類別" selected>所有類別</option> --}}
-            <option disabled selected>所有類別</a></option>
-            {{#each categoryBox}}
-            {{!-- <option value="{{ this.category}}" {{#ifeq this.category "1" }} selected {{/ifeq}} {{#ifnoteq
-              this.category }} " " {{/ifnoteq}}>{{ this.category }}
-            </option> --}}
-            <option value="{{ this.category}}" {{#ifEq this.category }} selected {{else}} {{/ifEq}}>{{
-              this.category }}
-            </option>
-            {{!-- <option value=" {{ this.category}}">{{ this.category }}</option> --}}
-            {{!-- <option value="1">家居物業</option> --}}
-            {{!-- <option value="2">交通出行</option> --}}
-            {{!-- <option value="3">休閒娛樂</option> --}}
-            {{!-- <option value="4">餐飲食品</option> --}}
-            {{!-- <option value="5">其他</option>--}}
-
-
-            {{/each}}
-          </select>
+            <select name="category" class="form-select" onchange="submit()">
+              <option selected>所有類別</option>
+              {{#each categoryBox}}
+              <option value="{{ this.category}}" {{#ifEq this.category }} selected {{else}} {{/ifEq}}>{{ this.category }}</option>
+              {{/each}}
+            </select>
         </div>
       </form>
     </div>
@@ -47,7 +28,6 @@
         <div class="d-flex justify-content-between">
           <div class="row">
             <div class="icon my-auto mx-3">
-              {{!-- <i class="fas  fa-home fa-4x "></i> --}}
               <i class="{{ this.categoryIcon }} fa-4x "></i>
             </div>
             <span class="column ml-3 my-auto">
@@ -58,13 +38,9 @@
           <h3 class="amount my-auto mx-auto">
             花費 : {{ this.amount}} 元
           </h3>
-
           <div class="button-div ml-3">
-            {{!-- <form action="" method="post">
-              <button type="submit" class="btn btn-success" style="display: inline;">修改</button>
-            </form> --}}
-            <a class="btn btn-success" href="./edit">修改</a>
-            <form action="" method="post">
+            <a class="btn btn-success" href="/records/{{ this._id }}/edit">修改</a>
+            <form action="/records/{{ this._id }}?_method=DELETE/delete" method="POST">
               <button type="submit" class="btn btn-danger">刪除</button>
             </form>
           </div>
@@ -72,21 +48,6 @@
       </li>
       {{/each }}
     </ul>
-    {{!-- <div class="row justify-content-center mt-5 "> --}}
-      {{!-- <div class="col-md-6 col-sm-4"> --}}
-
-        {{!-- <div class="button-div2 mt-3 my-auto "> --}}
-          {{!-- <form action="" method="post">
-            <button type="submit" class="btn btn-dark">新增支出</button>
-          </form> --}}
-          {{!-- <a class="btn btn-block btn-major" href="./new">新增支出</a> --}}
-          {{!--
-        </div> --}}
-
-        {{!-- </div> --}}
-      {{!-- </div> --}}
-    {{!--
-  </div> --}}
 </div>
 
 <script>
