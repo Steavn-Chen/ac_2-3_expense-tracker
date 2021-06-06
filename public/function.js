@@ -13,5 +13,17 @@ function getFormatDate(record) {
   return record.date = moment(record.date).format('YYYY-MM-DD')
 }
 
-module.exports = { getTotalAmount, getFormatDate }
+function getCategoryBox(iconData) {
+  const categoryBox = []
+  iconData.forEach(category => categoryBox.push(category))
+  return categoryBox
+}
+
+function getCategoryName(categoryData, category) {
+  const iconName = categoryData.find(item => category === item.category )
+  return iconName
+}
+
+module.exports = { getTotalAmount, getFormatDate, getCategoryBox, getCategoryName }
+
 

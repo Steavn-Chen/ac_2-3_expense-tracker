@@ -4,7 +4,7 @@ const Handlebars = require('handlebars')
 
 const Category = require('../../models/category')
 const Record = require('../../models/record')
-const { getTotalAmount, getFormatDate } = require('../../public/function')
+const { getTotalAmount, getFormatDate, getCategoryBox } = require('../../public/function')
 
 router.get('/', (req, res) => {
   Handlebars.registerHelper('ifEq', function (a,options) {
@@ -19,9 +19,8 @@ router.get('/', (req, res) => {
     const totalAmount = getTotalAmount(records)
     Category.find()
     .lean()
-    .then(categories => {
-      const categoryBox = []
-      categories.forEach(category => categoryBox.push(category))
+    .then(categories => { 
+      const categoryBox = getCategoryBox(categories)
       res.render('index', { records: records,totalAmount: totalAmount,categoryBox:categoryBox }) 
     })
   }) 

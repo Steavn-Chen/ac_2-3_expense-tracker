@@ -3,14 +3,13 @@ const router = express.Router()
 const Handlebars = require('handlebars')
 const Record = require('../../models/record')
 const Category = require('../../models/category.js')
-const { getTotalAmount, getFormatDate } = require('../../public/function')
+const { getTotalAmount, getFormatDate, getCategoryBox, getCategoryName } = require('../../public/function')
 
 router.get('/new', (req, res) => {
   Category.find()
     .lean()
     .then(categories => {
-      const categoryBox = []
-      categories.forEach(category => categoryBox.push(category))
+      const categoryBox = getCategoryBox(categories)
       res.render('new', { categoryBox: categoryBox })
     }) 
     .catch(err => console.log(err))
@@ -20,7 +19,7 @@ router.post('/', (req, res) => {
   const { name, date, category, amount} = req.body
   Category.find()
   .lean()
-  .then(categories =>  categories.find(item => category === item.category ))
+  .then(categories =>  getCategoryName(categories, category))
   .then(iconData => {
     Record.create ({
       name : name,
@@ -48,8 +47,7 @@ router.get('/:record_id/edit', (req, res) => {
     Category.find()
       .lean()
       .then(categories => {
-        const categoryBox = []
-        categories.forEach(category => categoryBox.push(category))
+        const categoryBox = getCategoryBox(categories)
         res.render('edit', { record: record, categoryBox:categoryBox }) 
      })
   }) 
@@ -64,7 +62,7 @@ router.put('/:record_id', (req,res) => {
     .then(record => {
       Category.find()
         .lean()
-        .then(categories => categories.find(data => category === data.category))
+        .then(categories =>  getCategoryName(categories, category))
         .then(iconData =>  {
           let newRecord = Object.assign(record, body)
           newRecord.categoryIcon = iconData.categoryIcon

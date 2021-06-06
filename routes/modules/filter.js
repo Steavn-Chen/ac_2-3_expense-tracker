@@ -4,7 +4,7 @@ const Handlebars = require('handlebars')
 
 const Record = require('../../models/record')
 const Category = require('../../models/category.js')
-const { getTotalAmount, getFormatDate } = require('../../public/function')
+const { getTotalAmount, getFormatDate, getCategoryBox } = require('../../public/function')
 
 router.get('/', (req, res) => {
   const query = req.query.category
@@ -28,8 +28,7 @@ router.get('/', (req, res) => {
       Category.find()
         .lean()
         .then(categories => {
-          const categoryBox = []
-          categories.forEach(category => categoryBox.push(category))
+          const categoryBox = getCategoryBox(categories)
           res.render('index', {records: filterRecord,totalAmount:   totalAmount,categoryBox:categoryBox })
       })
     })
