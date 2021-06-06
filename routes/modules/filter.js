@@ -4,7 +4,6 @@ const Handlebars = require('handlebars')
 
 const Record = require('../../models/record')
 const Category = require('../../models/category.js')
-const categoryBox = require('../../category.json')
 const { getTotalAmount, getFormatDate } = require('../../public/function')
 
 router.get('/', (req, res) => {
@@ -14,7 +13,6 @@ router.get('/', (req, res) => {
       return options.fn(this) }
       else  return options.inverse(this);
   })
-  
   Record.find()
     .lean()
     .then(records => { 
@@ -27,7 +25,13 @@ router.get('/', (req, res) => {
       getFormatDate(record)
       })
       const totalAmount = getTotalAmount(filterRecord)
-      res.render('index', {records: filterRecord,totalAmount: totalAmount,categoryBox:categoryBox })
+      Category.find()
+        .lean()
+        .then(categories => {
+          const categoryBox = []
+          categories.forEach(category => categoryBox.push(category))
+          res.render('index', {records: filterRecord,totalAmount:   totalAmount,categoryBox:categoryBox })
+      })
     })
     .catch(error => console.log(error))
 })

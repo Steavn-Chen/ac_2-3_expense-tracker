@@ -1,14 +1,19 @@
 const express = require('express')
 const router = express.Router()
 const Handlebars = require('handlebars')
-
 const Record = require('../../models/record')
 const Category = require('../../models/category.js')
-const categoryBox = require('../../category.json')
 const { getTotalAmount, getFormatDate } = require('../../public/function')
 
 router.get('/new', (req, res) => {
-  res.render('new', { categoryBox: categoryBox })
+  Category.find()
+    .lean()
+    .then(categories => {
+      const categoryBox = []
+      categories.forEach(category => categoryBox.push(category))
+      res.render('new', { categoryBox: categoryBox })
+    }) 
+    .catch(err => console.log(err))
 })
 
 router.post('/', (req, res) => {
@@ -40,7 +45,13 @@ router.get('/:record_id/edit', (req, res) => {
     else return options.inverse(this)
     })
     record.date = getFormatDate(record.date)
-    res.render('edit', { record, categoryBox })
+    Category.find()
+      .lean()
+      .then(categories => {
+        const categoryBox = []
+        categories.forEach(category => categoryBox.push(category))
+        res.render('edit', { record: record, categoryBox:categoryBox }) 
+     })
   }) 
   .catch(error => console.log(error)) 
 })

@@ -2,8 +2,8 @@ const express = require('express')
 const router = express.Router()
 const Handlebars = require('handlebars')
 
+const Category = require('../../models/category')
 const Record = require('../../models/record')
-const categoryBox = require('../../category.json')
 const { getTotalAmount, getFormatDate } = require('../../public/function')
 
 router.get('/', (req, res) => {
@@ -17,7 +17,13 @@ router.get('/', (req, res) => {
   .then(records => { records.forEach(record => {
     getFormatDate(record)})
     const totalAmount = getTotalAmount(records)
+    Category.find()
+    .lean()
+    .then(categories => {
+      const categoryBox = []
+      categories.forEach(category => categoryBox.push(category))
       res.render('index', { records: records,totalAmount: totalAmount,categoryBox:categoryBox }) 
+    })
   }) 
   .catch(error => console.log(error))
 })
