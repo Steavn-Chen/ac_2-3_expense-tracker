@@ -1,6 +1,5 @@
 const express = require("express");
 const router = express.Router();
-const Handlebars = require("handlebars");
 const Record = require("../../models/record");
 const Category = require("../../models/category.js");
 const {
@@ -42,13 +41,6 @@ router.get("/:record_id/edit", (req, res) => {
   return Record.findById(id)
     .lean()
     .then((record) => {
-      Handlebars.registerHelper("ifEq", function (a, options) {
-        if (a == record.category) {         
-          return options.fn(this);
-        } else {      
-          return options.inverse(this);
-        }
-      });
       record.date = getFormatDate(record.date);
       Category.find()
         .lean()

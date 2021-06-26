@@ -37,7 +37,7 @@
           <div class="input-group-append col-8 justify-content-start">
             <select class="custom-select" name="category">
               {{#each categoryBox }}
-              <option value="{{ this.category }}" {{#ifEq this.category }} selected {{else}} {{/ifEq}}>{{
+              <option value="{{ this.category }}" {{#is this.category ../record.category}} selected  {{/is}}>{{
                 this.category
                 }}</option>
               {{/each}}

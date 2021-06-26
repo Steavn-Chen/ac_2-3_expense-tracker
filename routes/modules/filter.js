@@ -1,6 +1,5 @@
 const express = require("express");
 const router = express.Router();
-const Handlebars = require("handlebars");
 
 const Record = require("../../models/record");
 const Category = require("../../models/category.js");
@@ -12,13 +11,7 @@ const {
 
 router.get("/", (req, res) => {
   const query = req.query.category;
-  Handlebars.registerHelper("ifEq", function (a,options) {
-    if (a == query) {  
-      return options.fn(this);
-    } else {   
-      return options.inverse(this);
-    }
-  });
+
   Record.find()
     .lean()
     .then((records) => {
@@ -44,6 +37,7 @@ router.get("/", (req, res) => {
             records: filterRecord,
             totalAmount: totalAmount,
             categoryBox: categoryBox,
+            categoryQuery: query
           });
         });
     })

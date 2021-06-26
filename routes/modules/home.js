@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const Handlebars = require("handlebars");
+
 
 const Category = require("../../models/category");
 const Record = require("../../models/record");
@@ -11,10 +11,6 @@ const {
 } = require("../../tools/dataTools");
 
 router.get("/", (req, res) => {
-  const query = req.query.category;
-  Handlebars.registerHelper("ifEq", function (a,options) {
-     if(a) return 
-  });
   Record.find()
     .lean()
     .then((records) => {
